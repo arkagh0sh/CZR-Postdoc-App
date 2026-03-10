@@ -1,0 +1,146 @@
+% !TEX root = research_plan.tex
+%
+\usepackage{hyperref}
+\usepackage{xcolor}
+%
+\usepackage[justification=centering]{caption}
+%
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,petri,cd}
+%
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amsthm}%\usepackage[framed]{ntheorem}
+\usepackage[capitalise]{cleveref}
+\mdfdefinestyle{theorembox}{
+    linecolor=black,
+    linewidth=4pt,
+    % --- This controls the "height" of the box around the text ---
+    innertopmargin=0pt,     % Space at the top
+    innerbottommargin=0pt,  % Space at the bottom
+    innerleftmargin=0pt,   % Space on the left
+    innerrightmargin=0pt,  % Space on the right
+    % ------------------------------------------------------------
+    roundcorner=0pt,        % Set to 5pt for rounded
+    %backgroundcolor=gray!5, % Light background
+    skipabove=0pt,%\baselineskip,
+    skipbelow=0pt,%\baselineskip
+}
+\global\mdfdefinestyle{thm}{%
+linecolor=black,
+linewidth=1pt,
+innertopmargin=0pt
+}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{xcolor}
+
+% 1. Define the Frame appearance
+\mdfdefinestyle{myThmFrame}{
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    linecolor=black,
+    linewidth=1pt,
+    %backgroundcolor=blue!5,
+    roundcorner=0pt
+}
+
+% 2. Define the Theorem Style (The "All-in-one" definition)
+\declaretheoremstyle[
+    headfont=\bfseries,       % Bold title
+    notefont=\itshape,        % Italicized optional note
+    bodyfont=\normalfont,     % Standard text for content
+    headpunct={. },           % Punctuation after "Theorem 1.1"
+    postheadspace=0pt,        % MAGIC: 0pt forces text to stay on the same line
+    mdframed={style=myThmFrame} % Attach the frame style here
+]{framedrunin}
+
+\declaretheorem[style=framedrunin, name=Theorem]{theorem}%[chapter]
+\declaretheorem[style=framedrunin, name=Lemma,      sibling=theorem]{lemma}
+\declaretheorem[style=framedrunin, name=Conjecture, sibling=theorem]{conjecture}
+\declaretheorem[style=framedrunin, name=Question,   sibling=theorem]{question}
+\declaretheorem[style=framedrunin, name=Note,       sibling=theorem]{note}
+\declaretheorem[style=framedrunin, name=Example,    sibling=theorem]{example}
+\declaretheorem[style=framedrunin, name=Definition, sibling=theorem]{definition}
+\declaretheorem[style=framedrunin, name=Problem,    sibling=theorem]{problem}
+\declaretheorem[style=framedrunin, name=Problem]{goal}
+
+\newcommand\prob[4]{
+  \begin{problem}[#1]\label{#2}
+  $ $\\
+  {\bfseries Input}: #3\\
+  {\bfseries Question}: #4
+  \end{problem}
+}
+
+%
+%%% General text macros %%%
+%
+\newcounter{commentnumber}
+\newcommand{\arka}[1]{\textbf{\textcolor{red}{Arka \stepcounter{commentnumber}\thecommentnumber: #1}}}
+\newcommand{\mine}[1]{\textcolor{magenta}{\cite{#1}}}
+\newcommand{\mythm}[2]{\textcolor{magenta}{\cite[#1]{#2}}}
+\newcommand{\emphdef}[1]{\textcolor{purple}{\emph{#1}}}
+\newcommand{\compsci}[1]{\textcolor{blue}{#1}}
+\newcommand{\hlt}[1]{\textbf{\textcolor{violet}{#1}}}
+%
+%%% Domains %%%
+%
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\dloQ}{\mathcal{Q}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\bitV}[2]{{\mathcal{V}_{#1}}{(#2)}}
+\newcommand{\ff}{\mathbb{F}}
+\newcommand{\fftwo}{\mathbb{F}_2}
+\newcommand{\ordZ}{\mathcal{Z}}
+\newcommand{\cU}{\mathcal{U}}
+%
+%%% General math macros
+%
+\newcommand{\setof}[2]{\left\{#1\ \mid\ #2 \right\}}
+\newcommand{\pn}{\mathbf{P}}
+%
+%%% Atoms %%%
+%
+\newcommand{\aut}[1]{\mathsf{Aut}{\left(#1\right)}}
+\newcommand{\age}[2][]{\textsc{Age}_{#1}{\left(#2\right)}}
+\newcommand{\tup}[1]{\overline{#1}}
+\newcommand{\otuequiv}[1]{\A^{(#1)}}
+%\newcommand{\eq}[1]{\A^{(#1)}}
+%
+%%% Polynomials %%%
+%
+\newcommand{\poly}[2]{#1\left[#2\right]}
+\newcommand{\idl}[1]{\mathcal{#1}}
+\newcommand{\idlgen}[1]{\langle #1 \rangle}
+%
+%%% vector spaces %%%
+%
+\newcommand{\flin}[2][\Q]{#2 \to_{\mathsf{fin}} #1}
+\newcommand{\bigd}[2][\Q]{#2 \to #1}
+\newcommand{\defd}[2][\Q]{#2 \to_{\textsc{def}} #1}
+\newcommand{\vgen}[1]{\langle #1 \rangle}
+\newcommand{\ofspan}[2]{$\textsc{Span}_{#1}(#2)$}
+\newcommand{\idvec}[1]{\mathbf{1}_{#1}}
+%
+%%% register automata %%%
+%
+\newcommand{\parikh}{\textsc{Parikh}}
+%
+%%% complexity %%%
+%
+\newcommand{\ptime}{\textsc{Ptime}}
+\newcommand{\exptime}{\textsc{Exptime}}
+\newcommand{\npc}{\textsc{NP-complete}}
