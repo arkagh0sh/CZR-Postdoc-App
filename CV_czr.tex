@@ -1,34 +1,34 @@
 \documentclass[11pt]{article}
 
 \usepackage[margin=1in]{geometry}
-%\usepackage[a4paper, total={7in, 9.5in}]{geometry}
 \usepackage{amsthm,amsmath,latexsym,amssymb,amsmath}
 \usepackage{fancyhdr,hyperref}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-%\usepackage{charter}
-\usepackage{mathpazo}
-%\usepackage{libertinus}
 \usepackage{marvosym}
+\usepackage{enumitem}
+\setlist{nolistsep,leftmargin=*}
 
 \usepackage{titlesec}
 \newcommand*{\justifyheading}%{\raggedleft}
 
 \titleformat{\section}
-  {\normalfont\Large\bfseries%\justifyheading
-  \color{Sepia}}{\thesection}{1em}{}
+  {\normalfont\large\bfseries%\justifyheading
+  \color{Sepia}
+  }{\thesection}{1em}{}
 
 \titleformat{\subsection}
   {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\section}
+{0pt}{6pt}{4pt}
+\titlespacing*{\subsection}
+{0pt}{6pt}{0pt}
 
-\usepackage{parcolumns}
-\newcommand{\leftp}[1]{\colchunk{\begin{description}\item[]{#1}%
-    \end{description}}}
-\newcommand{\rightp}[1]{\colchunk{\begin{description}\item[]{#1}%
-    \end{description}}\colplacechunks}
 
 \setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[enumerate]{itemsep=3pt}
 
 %\usepackage{xcolor}
 %\usepackage{sectsty}
@@ -36,156 +36,78 @@
 %\sectionfont{\color{indigo}}
 
 \title{
-\Large
-\textcolor{Sepia}{Curriculum Vitae}
-\bigskip
-
-\LARGE
-\textcolor{Sepia}{\textbf{Arka Ghosh}}
-%\bigskip
+{\textbf{Arka Ghosh}}
+%\smallskip
 %
 %\normalsize
 %%\Letter\ arkasparko@gmail.com\\
 %\Letter\ a.ghosh@uw.edu.pl\\
 %\Letter\ arka.ghosh@u-bordeaux.fr\\
 %
-%\bigskip
+%\smallskip
 %
 %\normalsize
 %\Mundus\ https://www.mimuw.edu.pl/\textasciitilde arka/
 }
 \author{}
 \date{}
-\setlength{\columnsep}{15pt}
-\setlength{\columnseprule}{0.4pt}
-\raggedright
+%\raggedright
 \raggedbottom
 \begin{document}
 
 \pagenumbering{gobble}
 
-%\color{darkgray}
-
 \maketitle
-
+\vspace{-50pt}
 \color{black}
 \section*{Employment}
 \hrule
-\bigskip
-\textbf{Postdoctoral researcher
-\hfill
-LaBRI, Bordeaux, France}
-\begin{enumerate}
-    \item[] January 2026 - present
-    \item[] Guided by : Nathana\"{e}l Fijalkow
-%    \item[] Funded by PEPR IA SAIF project
-\end{enumerate}
-\bigskip
-\textbf{Research Engineer
-\hfill
-LaBRI, Bordeaux, France}
-\begin{enumerate}
-    \item[] October 2024 - December 2025
-    \item[] Guided by : Nathana\"{e}l Fijalkow
-%    \item[] Funded by PEPR IA SAIF project
-\end{enumerate}
+\smallskip
+
+\textbf{Postdoctoral researcher} in LaBRI(Bordeaux, France)
+\hfill January 2026 - current\\
+Guided by Nathana\"{e}l Fijalkow.
+\medskip
+
+\textbf{Research engineer} in LaBRI(Bordeaux, France) \hfill October 2024 - December 2025\\
+Guided by Nathana\"{e}l Fijalkow.
+
 %
 \section*{Education}
 \hrule
-\bigskip
+\medskip
+\textbf{PhD in Computer Science} from University of Warsaw
+\hfill October 2020 - November 2025\\
+Guided by S\l{}awomir Lasota, Piotr Hofman.
+Awarded grade : passed with distinction.
+\medskip
 
-% \textbf{
-% University of Warsaw(October 2020 - Present)}
-% \begin{enumerate}
-%     \item[] Doctoral student
-%     \item[] Title of the dissertation : \textbf{Linear Algebra in Orbit-finite Dimension}
-%     \item[] Advisors : Sławomir Lasota, Piotr Hofman
-%     \item[] Supported by : NCN grant titled \emph{Data-enriched models of computation}
-% \end{enumerate}
-% \bigskip
+\textbf{Master of Science} from
+Indian Institute of Science, Bangalore.\hfill August 2019 - July 2020\\
+Major : Mathematics. Awarded grade : first class with distinction.
+\medskip
 
-\textbf{
-PhD in Computer Science\hfill
-University of Warsaw, Poland}
-\begin{enumerate}
-    \item[] October 2020 - November 2025
-    %\item[] Title of the dissertation : \textbf{Linear Algebra in Orbit-finite Dimension}
-    \item[] Advisors : S\l{}awomir Lasota, Piotr Hofman
-%    \item[] Supported by : NCN grant titled \emph{Data-enriched models of computation}
-    \item[] Awraded grade : Passed with distinction
-\end{enumerate}
-\bigskip
-
-\textbf{
-Master of Science
-\hfill
-Indian Institute of Science, Bangalore, India}
-\begin{enumerate}
-    \item[] Major : Mathematics
-    \item[] August 2019 - July 2020
-\end{enumerate}
-\bigskip
-
-\textbf{
-Bachelor of Science
-\hfill
-Indian Institute of Science, Bangalore, India}
-\begin{enumerate}
-    \item[] Major : Mathematics
-    \item[] August 2015 - July 2019
-\end{enumerate}
-\bigskip
-
-
-% \textbf{
-% Indian Institute of Science, Bangalore(August 2015 - July 2020)}
-% \begin{enumerate}
-%     \item[] Bachelor of Science(Research) and Master of Science
-%     \item[] Major : Mathematics
-% \end{enumerate}
-% \bigskip
-
-% \textbf{
-% Ramakrishna Mission Vidyapith}
-% \begin{enumerate}
-%     \item[] Higher Secondary Education(July 2013 - June 2015)
-%     \item[] Secondary Education(May 2007 - June 2013)
-% \end{enumerate}
-\section*{Research Grants}
+\textbf{Bachelor of Science} from
+Indian Institute of Science, Bangalore.\hfill July 2015 - July 2019\\
+Major : Mathematics. Awarded grade : first class with distinction.
+%
+\section*{Participation in Research Grants}
 \hrule
-\bigskip
-%
-%
-\textbf{Data enriched models of computation}
-\begin{enumerate}  
-    \item[]
-    Funding scheme : PEPR SAIF IA
-    \item[]
-    Role : Research 
-\end{enumerate}
-\bigskip
-
-\textbf{Linear algebra in orbit-finite dimension}
+\smallskip
 \begin{enumerate}
-    \item[] Funding scheme : NCN Preludium
-    \item[] Role : Principal investigator
+\item[$\diamond$]
+From Ocotober 2020 till December 2025 I was a \textbf{research engineer} in the \textbf{PEPR IA project SAIF (Safe AI through formal method)}.
+From January 2026 I am a \textbf{postdoctoral researcher} in the same project.
+\item[$\diamond$]
+From 2023 I am the \textbf{principal investigator} of the NCN preludium project
+\textbf{Linear algebra in orbit-finite dimension}.
+\item[$\diamond$]
+From October 2020 till September 2024 I was a doctoral student in the NCN Opus grant \textbf{Data enriched models of computation}.
 \end{enumerate}
-\bigskip
 %
-\textbf{PEPR IA SAIF}
-(2024 - 2026)
-\begin{enumerate}  
-    \item[]
-    Funding scheme : NCN Opus
-    \item[]
-    Role :
-    Doctoral student
-\end{enumerate}
-%\bigskip
-%\vspace{20pt}
 \section*{Awards and Scholarships}
 \hrule
-\bigskip
+\smallskip
 %
 \begin{enumerate}
     \item[$\diamond$]
@@ -208,181 +130,126 @@ Belgium}.
 %
 \section*{Supervisions}
 \hrule
-\bigskip
+\smallskip
+%
+\begin{enumerate}
+\item[$\diamond$]
+Summer internship (August - September 2025) of Antoni Wi\'{s}niewski on weighted automata.
+Co-supervised with Nathana\"{e}l Fijalkow.
+\item[$\diamond$]
+Summer internship (July - September 2023) of Micha\l{} Maszkowski on polynomial ideals.
+\end{enumerate}
+%
+\section*{Publications and Preprints}
+\hrule
+\smallskip
 
-\textbf{Antoni Wi\'{s}niewski}\\
-Weighted Automata\\
-\textit{Summer internship (August - September 2025)\\
-Co-supervised with Nathana\"{e}l Fijalkow}
-\bigskip
 
-\textbf{Micha\l{} Maszkowski}\\
-Polynomial Ideals\\
-\textit{Summer internship (July - September 2023)}\\
+\textbf{Publication practices:} 
+In the theoretical computer science community it is customary to write the authors in the alphabetical order of their surnames. We have followed this custom in all of the papers that I have co-authored.
+It is also more common to publish in peer-reviewed conferences than in journals.
+Conferences are ranked by CORE (https://portal.core.edu.au/conf-ranks/).
+\subsection*{Preprints}
 %
-%\section*{Publications and Preprints}
+\smallskip
+
+\begin{enumerate}
+\item[$\diamond$]
+Arka Ghosh, Aliaume Lopez:
+\textbf{Computability of Equivariant Gr\"{o}bner bases}.
+Arxiv preprint.
+\item[$\diamond$]
+Nathana\"{e}l Fijalkow, Arka Ghosh, Roman Kniazev, Guillermo A. P\'{e}rez, Pierre Vandenhove: \textbf{Computing the Reachability Value of Posterior-Deterministic POMDPs}. Arxiv preprint.
+\end{enumerate}
+%
+\subsection*{Publications in Journals}
+\smallskip
+\begin{enumerate}
+\item[$\diamond$]
+Micha\"{e}l Cadilhac, Arka Ghosh, Guillermo A. P\'{e}rez, Ritam Raha:
+\textbf{Parikh One-Counter Automata}.
+Information and Computation. Volume 306.
+\item[$\diamond$] Shaull Almagor, Arka Ghosh, Tim Leys, Guillermo A. P\' erez:\\
+\textbf{The Geometry of Reachability in Continuous Vector Addition Systems with States.}\\
+Information and Computation. Volume 304.
+\item[$\diamond$] Arka Ghosh, Piotr Hofman, S\l awomir Lasota:
+\textbf{Orbit-finite linear programming.}
+Journal of the ACM, Volume 72, Issue 1.
+(\textcolor{BrickRed}{\textit{Full version of LICS distinguished paper}})
+\end{enumerate}
+%
+\subsection*{Publications in Peer-Reviewed Conferences}
+\smallskip
+\begin{enumerate}
+\item[$\diamond$]
+Arka Ghosh, S\l{}awomir Lasota : \textbf{Equivariant ideals of polynomials}.
+LICS 2024.
+\item[$\diamond$]
+Micha\"{e}l Cadilhac, Arka Ghosh, Guillermo A. P\'{e}rez, Ritam Raha:
+\textbf{Parikh One-Counter Automata}.
+MFCS 2023.
+
+\item[$\diamond$] Shaull Almagor, Arka Ghosh, Tim Leys, Guillermo A. P\'{e}rez:
+\textbf{The Geometry of Reachability in Continuous Vector Addition Systems with States.}MFCS 2023.
+\item[$\diamond$]
+Arka Ghosh, Piotr Hofman, S\l awomir Lasota:\textbf{Orbit-finite linear programming.}LICS 2023.
+(\textcolor{BrickRed}{\textit{Distinguised paper award. Invited for submission to the Journal of the ACM.}})
+\item[$\diamond$]
+Arka Ghosh, Piotr Hofman, S\l awomir Lasota:
+\textbf{Solvability of orbit-finite systems of linear equations.}
+LICS 2022.
+\end{enumerate}
+%
+\section*{Presentations in International Conferences with Selection Committee}
+\hrule
+\smallskip
+
+\textbf{Equivariant Polynomial ideals} (LICS 2024, Highlights 2024).
+\textbf{Reachability in Symmetric Petri Nets with Data} (Highlights 2023).
+\textbf{Parikh One-Counter Automata} (MFCS 2023).
+\textbf{Orbit-finite Linear Programming} (LICS 2023).
+\textbf{Orbit-Finite Systems of Linear Equations} (Highlights 2022).
+\textbf{Solvability of Orbit-finite Systems of Linear Equations} (Highlights 2021).
+%
+%\section*{Seminar Presentations}
 %\hrule
-%\bigskip
-%%
+%\smallskip
 %
-%\textbf{Publication practices:} 
-%%
-%In the theoretical computer science community it is customary to write the authors in the alphabetical order of their surnames. We have followed this custom in all of the papers that I have co-authored.
-%It is also more common to publish in peer-reviewed conferences than in journals.
-%Conferences are ranked by CORE (https://portal.core.edu.au/conf-ranks/).
-%\subsection*{Preprints}
-%%
-%\bigskip
+%\textbf{Equivariant polynomial ideals and their membership problem}.\\
+%June 2025, M2F, LaBRI.
+%\smallskip
 %
-%Arka Ghosh, Aliaume Lopez:\\
-%\textbf{Computability of Equivariant Gr\"{o}bner bases}.\\
-%Arxiv preprint.
+%\textbf{Equivariant Polynomial Ideals}.\\
+%October 2023, Automata Seminar, MIMUW.
+%\smallskip
 %
-%\subsection*{Publications in Journals}
-%\bigskip
+%\textbf{Orbit-finite Systems of Linear Inequalities}.\\
+%March 2023, Automata Seminar, MIMUW.
+%\smallskip
 %
-%Michaël Cadilhac, Arka Ghosh, Guillermo A. P\' erez, Ritam Raha:\\
-%\textbf{Parikh One-Counter Automata}.\\
-%Information and Computation. Volume 306.
-%\bigskip
-%
-%Shaull Almagor, Arka Ghosh, Tim Leys, Guillermo A. P\' erez:\\
-%\textbf{The Geometry of Reachability in Continuous Vector Addition Systems with States.}\\
-%Information and Computation. Volume 304.
-%\bigskip
-%
-%Arka Ghosh, Piotr Hofman, S\l awomir Lasota:\\
-%\textbf{Orbit-finite linear programming.}\\
-%Journal of the ACM, Volume 72, Issue 1.\\
-%(\textcolor{BrickRed}{\textit{Full version of LICS distinguished paper}})
-%
-%\bigskip
-%
-%\subsection*{Publications in Peer-Reviewed Conferences}
-%\bigskip
-%
-%Arka Ghosh, S\l{}awomir Lasota :\\
-%\textbf{Equivariant ideals of polynomials}.\\
-%LICS 2024.
-%\bigskip
-%
-%Michaël Cadilhac, Arka Ghosh, Guillermo A. P\'{e}rez, Ritam Raha:\\
-%\textbf{Parikh One-Counter Automata}.\\
-%MFCS 2023.
-%\bigskip
-%
-%Shaull Almagor, Arka Ghosh, Tim Leys, Guillermo A. P\'{e}rez:\\
-%\textbf{The Geometry of Reachability in Continuous Vector Addition Systems with States.}\\
-%MFCS 2023.
-%\bigskip
-%
-%Arka Ghosh, Piotr Hofman, S\l awomir Lasota:\\
-%\textbf{Orbit-finite linear programming.}\\
-%LICS 2023.
-%(\textcolor{BrickRed}{\textit{Distinguised paper award. Invited for submission to the Journal of the ACM.}})
-%\bigskip
-%
-%Arka Ghosh, Piotr Hofman, S\l awomir Lasota:\\
-%\textbf{Solvability of orbit-finite systems of linear equations.}\\
-%LICS 2022.
-%
-%%
-%%\section*{Summer Schools}
-%%\hrule
-%%$ $\\
-%%
-%%\textbf{Autob\'oz 2022}. September 2022.
-%%Sobótka, Poland.
-%%\bigskip
-%%
-%%\textbf{Hermitage workshop II}. May 2022. Tyniec, Poland.
-%%\bigskip
-%%
-%%\textbf{Hermitage workshop I}. March 2022. Ch\k{e}ciny, Poland.
-%%\bigskip
-%%
-%
-%\section*{Presentations in International Conferences}
-%\hrule
-%\bigskip
-%
-%\textbf{Equivariant Polynomial ideals}.\\
-%LICS 2024, Highlights 2024.
-%\bigskip
-%
-%\textbf{Reachability in Symmetric Petri Nets with Data}.\\
-%Highlights 2023.
-%\bigskip
-%
-%\textbf{Parikh One-Counter Automata}.\\
-%MFCS 2023.
-%\bigskip
-%
-%\textbf{Orbit-finite Linear Programming}.\\
-%LICS 2023.
-%\bigskip
-%
-%\textbf{Orbit-Finite Systems of Linear Equations}.\\
-%Highlights 2022.
-%\bigskip
-%
-%\textbf{Solvability of Orbit-finite Systems of Linear Equations}.\\
-%Highlights 2021.
-%\bigskip
-%
-%%\section*{Seminar Presentations}
-%%\hrule
-%%\bigskip
-%%
-%%\textbf{Equivariant polynomial ideals and their membership problem}.\\
-%%June 2025, M2F, LaBRI.
-%%\bigskip
-%%
-%%\textbf{Equivariant Polynomial Ideals}.\\
-%%October 2023, Automata Seminar, MIMUW.
-%%\bigskip
-%%
-%%\textbf{Orbit-finite Systems of Linear Inequalities}.\\
-%%March 2023, Automata Seminar, MIMUW.
-%%\bigskip
-%%
-%%\textbf{Orbit-finite System of Linear Equations}.\\
-%%December 2021, Automata Seminar, MIMUW.
-%%\bigskip
+%\textbf{Orbit-finite System of Linear Equations}.\\
+%December 2021, Automata Seminar, MIMUW.
+%\smallskip
 
 \section*{Teaching Experience}
 \hrule
-\bigskip
+\smallskip
 
-\textbf{Theory of concurrency}\hfill Teaching assistant\\
-Winter semester 2023/24.
-\bigskip
-
-\textbf{Languages, automata and computations}\hfill Teaching assistant\\
-Summer semester 2022/23.
-\bigskip
-
-\textbf{Languages, automata and computations II}\hfill Teaching assistant\\
-Winter semesters 2021/22 and 2022/23.
-\bigskip
-
-\textbf{Computational complexity}\hfill Teaching assistant\\
-Winter semester 2021/22.
-\bigskip
-
-\textbf{Algorithms for Data Science}\hfill Teaching assistant\\
-Summer semester 2020/21.
-\bigskip
-
+\textbf{Theory of concurrency} (teaching assistant, winter semester 2023/24).
+\textbf{Languages, automata and computations} (teaching assistant, summer semester 2022/23),
+Languages, automata and computations II (teaching assistant, winter semesters 2021/22 and 2022/23),
+\textbf{Computational complexity} (teaching assistant, winter semester 2021/22),
+\textbf{Algorithms for Data Science} (teaching assistant, summer semester 2020/21).
 \section*{Services}
 \hrule
-\bigskip
+\smallskip
 
-\subsubsection*{Committee Membership}
-
+\paragraph*{Committee Membership:}
+%
 VMCAI 2026 artifact evaluation committee member.
-
-\subsubsection*{External reviewer}
+%
+\vspace{-10pt}
+\paragraph*{External reviewer:}
 STACS 2026,
 SODA 2026,
 CONCUR 2025,
@@ -391,169 +258,15 @@ ICALP 2024,
 MFCS 2023,
 CONCUR 2023,
 LICS 2022.
-
-
-\section*{Languages}
-\hrule
-\bigskip
-
-\textbf{Human Languages:} Bengali, English, Hindi
-\bigskip
-
-\textbf{Programming Languages:}
-Idris, Sagemath, Haskell, Python, Rust
-
-
-% \pagebreak
-% \section*{Courses Taken in Mathematics}
-% \hrule
-% \bigskip
-
-% %\textbf{Mandatory Courses}\\
-% Analysis and Linear Algebra 1, Analysis and Linear Algebra 2, Probability and Statistics, 
-% Basic Analysis(equivalent to Analysis 1), Introductory Number Theory and Algebra, 
-% Ordinary Differential Equation, Algebra 1, Linear Algebra, Multivariable Calculus, Topology, 
-% Complex Analysis, Measure Theory and Intergration, Algebra 2, Introduction to Algbraic Topology,
-% Functional Analysis, Partial Differential Equations. 
-% %\textbf{Elective Courses}\\
-% Combinatorics, Algebraic Topology,  Logic Types and Spaces, Probability models, 
-% Homological Algebra, Logic(classical, modal and intuitionistic), 
-% \\
-
-%\footnotesize{(*Courses I am taking in Jan-Apr semester 2020)}
-%\normalsize
-
-% \section*{Courses Taken in Computer Science}
-% \hrule
-% $ $\\
-
-% Algorithms and Programming, Design and Analysis of Algorithms, Spectral Algorithms, 
-% Automata Theory, Computational Complexity Theory, Program Analysis and Verification,
-% Languages Automata and Computations II, Selected Topics in Graph Theory.
-% \\
-
-%\footnotesize{(*Courses I am taking in Jan-Apr semester 2020)}
-%\normalsize
-
-
-%\footnotesize{(*Courses going on in Aug-Dec semester 2019, **Courses I am planning to take in
-%Jan-Apr semester 2020)}
-
-% \pagebreak
-
-% \section*{Education}
-% \hrule
-% $ $\\
-% {\textbf{University of Warsaw(October 2020 - Present)}}\\
-% \textbf{\hspace*{3ex} $\bullet$ Doctoral Student}\\
-% \hspace*{5ex} $\bullet$ Advisors - Sławomir Lasota, Piotr Hofman\\
-% \hspace*{5ex} $\bullet$ Supported by - NCN grant Data-enriched models of computation\\
-% [2pt]
-
-% {\textbf{Indian Institute of Science, Bangalore(August 2015 - July 2020)}}\\
-% \textbf{\hspace*{3ex} $\bullet$ Bachelor of Science(Research) and Master of Science}\\
-% \hspace*{5ex} $\bullet$ Mathematics Major\\
-% %\hspace*{5ex} $\bullet$ CGPA - 7.3/8\\
-% %[2pt]
-
-% {\textbf{Ramakrishna Mission Vidyapith}}
-% %, Purulia(May 2007 - June 2015)}}\\
-% \textbf{\hspace*{3ex}$\bullet$ Higher Secondary Education(July 2013 - June 2015)}$ $\
-% \\
-% %\hspace*{5ex} $\bullet$ Subjects - Mathematics, Physics, Chemistry, Statistics, 
-% %English, Bengali.\hfill \\
-% %\hspace*{5ex} $\bullet$ Aggregate total - 465/500\\
-% \textbf{\hspace*{3ex}$\bullet$ Secondary Education(May 2007 - June 2013)}$ $\\
-% %\hspace*{5ex} $\bullet$ Subjects - Mathematics, Physical Science, Life Science, History, 
-% %Geography, English, Bengali.\\
-% %\hspace*{5ex} $\bullet$ Aggregate total - 654/700
-
-% \normalsize \section*{Projects}
-% \hrule
-% $ $\\
-% \textbf{Data-enriched Models of Computation} \hfill
-% \textbf{Mentor - Prof. dr hab. Sławomir Lasota}\\
-% For my PhD I am studying models of computation such as automata and Petri nets,
-% extended with the concept of infinite data.
-% \\
-
-
-% \textbf{Computer Assisted Topology and Geometry} \hfill
-% \textbf{Mentor - Prof. Siddhartha Gadgil}\\
-% In this project I implemented various algorithms 
-% to decide properties of surfaces and curves on them using Scala.
-% Codes are available at the 
-% \href{https://github.com/anotherArka/Superficial}{Github repository}
-% named \emph{Superficial.} 
-% \\
-
-% \textbf{Formal Verification of Muen} \hfill \textbf{Mentor - Prof. Deepak D'Souza}\\
-% I was an intern in a project in CSA(IISc) whose goal is to formally verify the functional 
-% correctness of the \emph{Muen} separation kernel, using a method called 
-% \emph{parametric refinement}.
-% %The kernel is written in Ada-Spark except for a small part which is written in assembly.
-% I proved functional correctness of \emph{interrupt-handling} by \emph{Muen}.
-% %The proofs were done by writing assertions in Spark. 
-% %These assertions were checked using Gnatprove which uses Z3, CVC4 and Alt-Ergo theorem provers. 
-% \\
-
-% \textbf{Understanding Univalence Axiom} \hfill
-% \textbf{Mentor - Prof. Siddhartha Gadgil}\\
-% This was my final semester project for bachelors.
-% The aim of this project was to understand the univalence axiom,
-% and its consequences in homotopy type theory.
-% %It was divided into two parts.
-% %First part was about a type-theoretic analogue of the
-% %Burali-Forti paradox arising from the assumption that a single 
-% %universe contains everything.
-% %Second part was about interpreting universes along with
-% %the univalence axiom, as universal bundles.
-% \\ [2pt]
-
-% \textbf{Formalisation in Idris} \hfill
-% \textbf{Mentor - Prof. Siddhartha Gadgil} \\
-% In this project I formalized and proved several lemmas in group theory
-% and number theory using Idris.
-% I also tried to give definitions and prove lemmas about types with an 
-% equivalence relation. Codes are available at my
-% github repositories named
-% \href{https://github.com/anotherArka/LTS2019}{LTS2019} and
-% \href{https://github.com/anotherArka/Idris-Number-Theory}{Idris-number-theory}.\\
-
-% %\textbf{A Total GCD Function in Idris(May 2018-June 2018)} \hfill
-% %\textbf{Mentor - Prof. Siddhartha Gadgil}\\
-% %In this project I proved correcteness and termination of Euclid's algorithm
-% %for computing GCD of two numbers and several . Codes are available at my
-% %\href{https://github.com/anotherArka/Idris-Number-Theory}{Github repository}
-% %named \emph{Idris-number-theory}.\\ [2pt]
-
-% %\textbf{First order logic(May 2017-June 2017)} \hfill 
-% %\textbf{Mentor - Prof. Siddhartha Gadgil}\\
-% %This was a reading project. The focus of this project was G\"odel's Completeness theorem and 
-% %Skolem's paradox for countable models. Along with these I also studied some axiomatic set 
-% %theory. \\[2pt]
-
-% %\textbf{Topology(May 2016-June 2016)} \hfill \textbf{Mentor - Prof. Gautam Bharali}\\
-% %This was a reading project. The aim of the project was to understand a proof of ``$\mathbb{R}^n$ 
-% %is not homeomorphic $\mathbb{R}^m$ when $n\neq m$''. In the process of understanding the proof I 
-% %studied basic concepts of topology like connectedness and compactness, and a combinatorial proof 
-% %of the Cubical Sperner's Lemma. 
-
-% \section*{Achievements and Scholarships}
-% \hrule
-% $ $\\
-% \hspace*{3ex} $\bullet$ Selected for \textbf{Asian Science Camp 2016}.\\
-% \hspace*{3ex} $\bullet$ KVPY scholar, All India Rank - 228.
-% \subsection*{Languages}
-% \hrule
-% $ $\\
-% \hspace*{3ex} $\bullet$ \textbf{Human Languages -} Bengali, English, Hindi.\\
-% \hspace*{3ex} $\bullet$ \textbf{Programming Languages -} 
-% Idris, Scala, Haskell, Java, C, Python, Ada-SPARK, SAGE.
-
-% \subsection*{Other Interests}
-% \hrule
-% $ $\\
-% I play football and badminton. I am interested in Hindustani classical music and sometimes try to play the Violin.
-
+%
+%
+%\section*{Languages}
+%\hrule
+%\smallskip
+%
+%\textbf{Human Languages:} Bengali, English, Hindi
+%\smallskip
+%
+%\textbf{Programming Languages:}
+%Idris, Sagemath, Haskell, Python, Rust
 \end{document}
