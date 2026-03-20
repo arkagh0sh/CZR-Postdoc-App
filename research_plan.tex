@@ -12,11 +12,16 @@ Orbit-finitely Generated Algebraic Objects
 %\usepackage{mathpazo}
 \usepackage[T1]{fontenc}
 %
-\setlength{\columnsep}{20pt}
-%\linespread{1.05}
+\usepackage{natbib}
+\setlength{\bibsep}{5pt}
 \input{macros}
 \date{}
 %%
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{4pt}{4pt}
+\titlespacing*{\subsection}{0pt}{4pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{4pt}{4pt}
+\titlespacing*{\paragraph}{0pt}{4pt}{4pt}
 %
 %
 \begin{document}
@@ -32,47 +37,59 @@ Orbit-finitely Generated Algebraic Objects
 \section{Introduction}
 %
 \paragraph*{Data-enriched models of computation.}
-Classical models of computation are extended with the capability of storing and manipulating data values from infinite domains to be able to model real world processes better.
-This leads to data-enriched models of computation such as register automata, which extend finite automata with a finite set of registers for storing and comparing data values and accept data words (words where each position carries a label together with a data value),
+Modelling and verification are two fundamental aspects of computer science.
+We model programs using abstractions such as finite automata or Petri nets,
+and then verify properties like non-emptiness or reachability automatically.
+For classical models over finite alphabets,
+this approach has been highly successful,
+supported by a mature theory and toolbox (for eg, SPIN).
+In practice, however, many systems manipulate values drawn from infinite domains (timestamps, process identifiers, unbounded numbers, etc) so classical models are often too restrictive.
+This motivates data-aware extensions such as register automata,
+which extend finite automata with a finite set of registers for storing and comparing data values and accept data words (words where each position carries a label together with a data value),
 and Petri nets with data, in which tokens carry data from an infinite data domain.
+These data domains come in many forms.
+The two most common examples of data domains that appear in the literature are:
+%
+\begin{enumerate}
+\item The equality domain, which is an infinite set of strings/identifiers/numbers that can be
+checked against equality or disequality.
+\item The ordered domain, which is the set of rational numbers with the usual ordering.
+\end{enumerate}
+These can be generalised to relational data domains,
+where the elements of the data domain come from an infinite set with additional structures given by relations defined on it.
+For equality and ordered data,
+the relations are respectively equality and order.
+Relational data domains can also be infinite graphs, where the elements of the domain are the nodes of the graph,
+and the relation is the adjacency relation of the graph.
+There are also algebraic data domains,
+where instead of relations (like for relational data) one has functions/operations defined on them.
+For example one can consider the domain of bit vectors \cite[Section 7.3.2]{atombook} which are arrays of binary bits with the bit-wise XOR operation.
+One can also construct new data domains from old ones using simple operations such as disjoint sums and products.
 
-The data domains come in many forms.
-The two most common data domains appearing in the literature are the \emphdef{equality domain} (an infinite set of strings/identifiers/numbers that can be checked against equality or dis-equality) and the \emphdef{ordered domain} (the set of rational numbers with the usual ordering).
-In general data domains can be more complex structures such as infinite graphs, hyper-graphs and trees.
-New data domains can be constructed from old ones by taking sums and products.
 
-%The class of data domains used in practice is quite diverse (\cite[Section 3.2]{cpnbook}).
-%In contrast, most of the literature in the theoretical computer science community focuses only on a limited set of data domains,
-%and usually on equality and ordered data.
-%\arka{verification difficult: we will tackle by studying relevant algebraic problems}
-
-%\arka{significance of the project: give a toolbox, but build algebraic foundation. orbit-finite math str, new combinatorial properties}
-
-%One of the reasons for this gap between theory and practice,
-%which I want to address in my project, is the lack of an algebraic foundation.
-While these data-enriched models better capture real world systems,
-the added ability to store and compare data typically makes their automatic analysis significantly harder.
-We aim to tackle this difficulty by studying algebraic problems useful in this context.
+While these data-enriched models better capture real systems, the added ability to store and compare data typically makes verification significantly harder.
+A major source of this difficulty,
+that we want to address in this project,
+is the lack of algebraic foundations that,
+in the infinite-data setting, play the same role that classical algebra plays for finite models.
 In the finite case, algebraic methods are tightly linked to verification:
-for example, Petri net state equations are formulated as integer linear programs,
-reachability for reversible Petri nets reduces to the polynomial ideal membership problem \cite{MM82}.
+for example, Petri-net state equations can be formulated as integer linear programs,
+and reachability for reversible Petri nets reduces to the polynomial ideal membership problem \cite{MM82}.
 %
-%The behaviour of data-enriched models is invariant under isomorphisms of the underlying data domain.
-%Moreover, up to the isomorphism of the data domain, a data-enriched model can behave only in finitely many ways.
-%For example, a register automaton over the ordered domain that recognises the language of words whose letters that are sorted in the increasing order,
-%cares not about the specific letters but only about the ordering of consecutive letters,
-%and can only check if the incoming data value is smaller, bigger or equal to the data values stored in its registers.
-%
-%\vspace{-10pt}
-\paragraph*{Orbit-finiteness.}
-%
-The article \cite{BKL11} introduced the concept of \emphdef{orbit-finite sets}:
-sets constructed from a data domain, that are finite up to symmetries (automorphisms) of the data domain.
-The orbit-finite setting gives a uniform way to represent and analyse data-enriched models of computation.
+\paragraph*{Orbit-finite structures.}
+The behaviour of data-enriched models is invariant under isomorphisms of the underlying data domain.
+For example, a register automaton over the ordered domain that recognises the language of words that are sorted in the increasing order,
+cares not about the specific letters but only about the ordering of consecutive letters.
+Moreover, up to the isomorphism of the data domain, a data enriched model can behave only in finitely many ways.
+For instance, a register automaton over the equality domain can only check if the incoming data value is equal or dis-equal to the data values stored in its registers.
+
+In \cite{BKL11,BKL14}, the intuitive understanding of finite up to isomorphism has been formalised by the notion of orbit-finiteness.
+The orbit-finite setting gives a uniform way to represent and analyse models of computation with infinite alphabets.
 A register automaton is an automaton with orbit-finitely many states and transitions,
 a data Petri net is a Petri net with orbit-finitely many places and transitions. This translation into the orbit-finite framework integrates naturally with algebra.
-State equations of data Petri nets are orbit-finite systems of linear equations, the reachability problem for reversible data Petri nets reduces to the membership problem for orbit-finitely generated polynomial ideals,
-transition monoids of register automata are orbit-finitely generated.
+Transitions monoids of register automata are orbit-finitely generated,
+state equations of data Petri nets are orbit-finite systems of linear equations,
+the reachability problem for reversible data Petri nets reduces to the membership problem for orbit-finitely generated polynomial ideals.
 %
 \section{Research questions}
 %
@@ -107,7 +124,102 @@ To do this we will study algebraic properties/problems for specific domains,
 identify combinatorial properties responsible for satisfaction of an algebraic property/decidability of an algebraic problem, and extend the result from a specific domain to a general class.
 This interplay between problems and properties leads to a connection with model theory.
 %
-\tableofcontents
+\subsection{Connections with other research areas}
+%
+The origins of orbit-finite structures can be traced to the work of Fraenkel and Mostowski,
+who introduced \emph{set theory with atoms (ZFA)} and used \emph{permutation models} to show that the independence of axiom of choice in this setting
+\cite{jech}.
+This was rediscovered by Gabbay and Pitts as \emph{nominal sets},
+which was used by them to provide a rigorous mathematical foundation for variable binding and $\alpha$-equivalence \cite{GP99}.
+This was also independently rediscovered in the concurrency community in terms of \emph{named sets},
+which was then used to give a compact representation for \emph{$\pi$-calculus processes}
+\cite{MP98}.
+
+Orbit-finitely generated algebraic objects have also been studied by several communities.
+Polynomial rings with infinitely many variables were studied by Cohen in the context of metabelian groups \cite{Cohen67},
+and by Aschenbrenner, Hillar for their usefulness in chemistry and algebraic statistics \cite{AH04}.
+Orbit-finite dimensional vector spaces have been studied by David Evans because of their connection to Thomas conjecture\cite{CE91,homOFR25}.
+%
+%
+%\section{Introduction}
+%
+%\paragraph*{Data-enriched models of computation.}
+%Classical models of computation are extended with the capability of storing and manipulating data values from infinite domains to be able to model real world processes better.
+%This leads to data-enriched models of computation such as register automata, which extend finite automata with a finite set of registers for storing and comparing data values and accept data words (words where each position carries a label together with a data value),
+%and Petri nets with data, in which tokens carry data from an infinite data domain.
+%
+%The data domains come in many forms.
+%The two most common data domains appearing in the literature are the \emphdef{equality domain} (an infinite set of strings/identifiers/numbers that can be checked against equality or dis-equality) and the \emphdef{ordered domain} (the set of rational numbers with the usual ordering).
+%In general data domains can be more complex structures such as infinite graphs, hyper-graphs and trees.
+%New data domains can be constructed from old ones by taking sums and products.
+%
+%%The class of data domains used in practice is quite diverse (\cite[Section 3.2]{cpnbook}).
+%%In contrast, most of the literature in the theoretical computer science community focuses only on a limited set of data domains,
+%%and usually on equality and ordered data.
+%%\arka{verification difficult: we will tackle by studying relevant algebraic problems}
+%
+%%\arka{significance of the project: give a toolbox, but build algebraic foundation. orbit-finite math str, new combinatorial properties}
+%
+%%One of the reasons for this gap between theory and practice,
+%%which I want to address in my project, is the lack of an algebraic foundation.
+%While these data-enriched models better capture real world systems,
+%the added ability to store and compare data typically makes their automatic analysis significantly harder.
+%We aim to tackle this difficulty by studying algebraic problems useful in this context.
+%In the finite case, algebraic methods are tightly linked to verification:
+%for example, Petri net state equations are formulated as integer linear programs,
+%reachability for reversible Petri nets reduces to the polynomial ideal membership problem \cite{MM82}.
+%%
+%%The behaviour of data-enriched models is invariant under isomorphisms of the underlying data domain.
+%%Moreover, up to the isomorphism of the data domain, a data-enriched model can behave only in finitely many ways.
+%%For example, a register automaton over the ordered domain that recognises the language of words whose letters that are sorted in the increasing order,
+%%cares not about the specific letters but only about the ordering of consecutive letters,
+%%and can only check if the incoming data value is smaller, bigger or equal to the data values stored in its registers.
+%%
+%%\vspace{-10pt}
+%\paragraph*{Orbit-finiteness.}
+%%
+%The article \cite{BKL11} introduced the concept of \emphdef{orbit-finite sets}:
+%sets constructed from a data domain, that are finite up to symmetries (automorphisms) of the data domain.
+%The orbit-finite setting gives a uniform way to represent and analyse data-enriched models of computation.
+%A register automaton is an automaton with orbit-finitely many states and transitions,
+%a data Petri net is a Petri net with orbit-finitely many places and transitions. This translation into the orbit-finite framework integrates naturally with algebra.
+%State equations of data Petri nets are orbit-finite systems of linear equations, the reachability problem for reversible data Petri nets reduces to the membership problem for orbit-finitely generated polynomial ideals,
+%transition monoids of register automata are orbit-finitely generated.
+%%
+%\section{Research questions}
+%%
+%The overarching goal of this project is to \hlt{build a theory of orbit-finitely generated algebraic objects}.
+%In particular,
+%we aim to study three kinds of algebraic objects:
+%\emphdef{orbit-finite dimensional vector spaces},
+%\emphdef{polynomial rings with data values as variables},
+%and \emphdef{orbit-finitely generated monoids}.
+%Given such an object, we are interested in its sub-objects (vector subspaces, polynomial ideals, sub-monoids) that are \emphdef{equivariant},
+%invariant under the automorphisms of the underlying data domain.
+%
+%We are interested in both structural properties and decision problems on these algebraic objects.
+%Structural properties usually come in one of the two following forms
+%%
+%\begin{enumerate}
+%\item \textbf{Finiteness properties:} Is every strictly increasing chain of equivariant vector subspaces/polynomial ideals finite? Does every orbit-finite monoid have finite J-height?
+%\item \textbf{Symmetry properties:} Does every equivariant system of polynomial equation have an equivariant solution? 
+%\end{enumerate}
+%%
+%The decision problems are usually one of the two following forms  
+%%
+%\begin{enumerate}
+%\item \textbf{Membership questions:} Decide whether a given vector (resp. polynomial) is inside the equivariant vector
+%subspace (resp. polynomial ideal) generated by another given finite set of vectors (resp. polynomials)?
+%\item \textbf{Finiteness questions:} Decide if a given orbit-finitely generated monoid is actually orbit-finite?
+%\end{enumerate}
+%%
+%Of course the answer to a specific question of the above kind depends on the underlying data domain.
+%Our aim is to \hlt{connect property of an algebraic object/decidability of an algebraic problem to structural properties of the underlying data domain}.
+%To do this we will study algebraic properties/problems for specific domains,
+%identify combinatorial properties responsible for satisfaction of an algebraic property/decidability of an algebraic problem, and extend the result from a specific domain to a general class.
+%This interplay between problems and properties leads to a connection with model theory.
+%%
+%\tableofcontents
 %
 \section{State of the art and applicant's contribution}
 %
