@@ -12,34 +12,51 @@ Orbit-finitely Generated Algebraic Objects
 %\usepackage{mathpazo}
 \usepackage[T1]{fontenc}
 %
-\usepackage{natbib}
-\setlength{\bibsep}{5pt}
+\usepackage[backend=biber,style=alphabetic,url=false,doi=false,isbn=false,eprint=false]{biblatex}
+\setlength{\bibitemsep}{0pt}
+\addbibresource{paper.bib}
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite]{
+      \step[fieldset=editor, null]
+      \step[fieldset=editortype, null]
+      \step[fieldset=editora, null]
+      \step[fieldset=editorb, null]
+    }
+  }
+}
+\AtEveryBibitem{
+  \clearlist{location}
+  \clearlist{address}
+  \clearlist{publisher}
+}
 \input{macros}
 \date{}
 %%
 \usepackage{titlesec}
-\titlespacing*{\section}{0pt}{4pt}{4pt}
-\titlespacing*{\subsection}{0pt}{4pt}{4pt}
-\titlespacing*{\subsubsection}{0pt}{4pt}{4pt}
-\titlespacing*{\paragraph}{0pt}{4pt}{4pt}
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
+\titlespacing*{\paragraph}{0pt}{6pt}{3pt}
 %
 %
 \begin{document}
 %
 %
-%\let\allcaps=\relax
+%\let\allcaps=\rela
 %
 \maketitle
 %
 %\raggedright
-%\raggedbottom
+\raggedbottom
 %
 \section{Introduction}
 %
 \paragraph*{Data-enriched models of computation.}
 Modelling and verification are two fundamental aspects of computer science.
 We model programs using abstractions such as finite automata or Petri nets,
-and then verify properties like non-emptiness or reachability automatically.
+%and then verify properties like non-emptiness or reachability automatically.
+so we can verify their properties automatically.
 For classical models over finite alphabets,
 this approach has been highly successful,
 supported by a mature theory and toolbox (for eg, SPIN).
@@ -47,8 +64,8 @@ In practice, however, many systems manipulate values drawn from infinite domains
 This motivates data-aware extensions such as register automata,
 which extend finite automata with a finite set of registers for storing and comparing data values and accept data words (words where each position carries a label together with a data value),
 and Petri nets with data, in which tokens carry data from an infinite data domain.
-These data domains come in many forms.
-The two most common examples of data domains that appear in the literature are:
+The data domains come in many forms.
+Two common examples of data domains that appear in the literature are:
 %
 \begin{enumerate}
 \item The equality domain, which is an infinite set of strings/identifiers/numbers that can be
@@ -83,7 +100,8 @@ cares not about the specific letters but only about the ordering of consecutive 
 Moreover, up to the isomorphism of the data domain, a data enriched model can behave only in finitely many ways.
 For instance, a register automaton over the equality domain can only check if the incoming data value is equal or dis-equal to the data values stored in its registers.
 
-In \cite{BKL11,BKL14}, the intuitive understanding of finite up to isomorphism has been formalised by the notion of orbit-finiteness.
+In \cite{BKL14}, the intuitive understanding of finite up to isomorphism has been formalised by the notion of orbit-finiteness.
+An \emphdef{orbit-finite set} is a set constructed from a data domain, that are finite up to symmetries (automorphisms) of the data domain.
 The orbit-finite setting gives a uniform way to represent and analyse models of computation with infinite alphabets.
 A register automaton is an automaton with orbit-finitely many states and transitions,
 a data Petri net is a Petri net with orbit-finitely many places and transitions. This translation into the orbit-finite framework integrates naturally with algebra.
@@ -97,17 +115,17 @@ The overarching goal of this project is to \hlt{build a theory of orbit-finitely
 In particular,
 we aim to study three kinds of algebraic objects:
 \emphdef{orbit-finite dimensional vector spaces},
-\emphdef{polynomial rings with data values as variables},
+\emphdef{polynomial rings with variables indexed by data values},
 and \emphdef{orbit-finitely generated monoids}.
 Given such an object, we are interested in its sub-objects (vector subspaces, polynomial ideals, sub-monoids) that are \emphdef{equivariant},
-invariant under the automorphisms of the underlying data domain.
+i.e.\ invariant under the symmetries of the underlying data domain.
 
 We are interested in both structural properties and decision problems on these algebraic objects.
 Structural properties usually come in one of the two following forms
 %
 \begin{enumerate}
 \item \textbf{Finiteness properties:} Is every strictly increasing chain of equivariant vector subspaces/polynomial ideals finite? Does every orbit-finite monoid have finite J-height?
-\item \textbf{Symmetry properties:} Does every equivariant system of polynomial equation have an equivariant solution? 
+\item \textbf{Symmetry properties:} Does every equivariant system of polynomial equations have an equivariant solution? 
 \end{enumerate}
 %
 The decision problems are usually one of the two following forms  
@@ -127,18 +145,18 @@ This interplay between problems and properties leads to a connection with model 
 \subsection{Connections with other research areas}
 %
 The origins of orbit-finite structures can be traced to the work of Fraenkel and Mostowski,
-who introduced \emph{set theory with atoms (ZFA)} and used \emph{permutation models} to show that the independence of axiom of choice in this setting
+who introduced the \emph{set theory with atoms (ZFA)} and used \emph{permutation models} to show that the independence of axiom of choice in this setting
 \cite{jech}.
-This was rediscovered by Gabbay and Pitts as \emph{nominal sets},
+It was rediscovered by Gabbay and Pitts as \emph{nominal sets},
 which was used by them to provide a rigorous mathematical foundation for variable binding and $\alpha$-equivalence \cite{GP99}.
-This was also independently rediscovered in the concurrency community in terms of \emph{named sets},
+It was also independently rediscovered in the concurrency community in terms of \emph{named sets},
 which was then used to give a compact representation for \emph{$\pi$-calculus processes}
 \cite{MP98}.
 
 Orbit-finitely generated algebraic objects have also been studied by several communities.
 Polynomial rings with infinitely many variables were studied by Cohen in the context of metabelian groups \cite{Cohen67},
-and by Aschenbrenner, Hillar for their usefulness in chemistry and algebraic statistics \cite{AH04}.
-Orbit-finite dimensional vector spaces have been studied by David Evans because of their connection to Thomas conjecture\cite{CE91,homOFR25}.
+and by Aschenbrenner and Hillar for their applications in chemistry and algebraic statistics \cite{AH04}.
+Orbit-finite dimensional vector spaces have been studied by David Evans because of their connection to Thomas conjecture \cite{CE91,homOFR25}.
 %
 %
 %\section{Introduction}
@@ -179,7 +197,7 @@ Orbit-finite dimensional vector spaces have been studied by David Evans because 
 %\paragraph*{Orbit-finiteness.}
 %%
 %The article \cite{BKL11} introduced the concept of \emphdef{orbit-finite sets}:
-%sets constructed from a data domain, that are finite up to symmetries (automorphisms) of the data domain.
+%sets constructed from a data domain, that are finite up to symmetries (symmetries) of the data domain.
 %The orbit-finite setting gives a uniform way to represent and analyse data-enriched models of computation.
 %A register automaton is an automaton with orbit-finitely many states and transitions,
 %a data Petri net is a Petri net with orbit-finitely many places and transitions. This translation into the orbit-finite framework integrates naturally with algebra.
@@ -192,10 +210,10 @@ Orbit-finite dimensional vector spaces have been studied by David Evans because 
 %In particular,
 %we aim to study three kinds of algebraic objects:
 %\emphdef{orbit-finite dimensional vector spaces},
-%\emphdef{polynomial rings with data values as variables},
+%\emphdef{polynomial rings with variables indexed by data values},
 %and \emphdef{orbit-finitely generated monoids}.
 %Given such an object, we are interested in its sub-objects (vector subspaces, polynomial ideals, sub-monoids) that are \emphdef{equivariant},
-%invariant under the automorphisms of the underlying data domain.
+%invariant under the symmetries of the underlying data domain.
 %
 %We are interested in both structural properties and decision problems on these algebraic objects.
 %Structural properties usually come in one of the two following forms
@@ -223,16 +241,14 @@ Orbit-finite dimensional vector spaces have been studied by David Evans because 
 %
 \section{State of the art and applicant's contribution}
 %
-\arka{Is it better to have a separate state of the art or have one for each research question?}
-\arka{For LIP. have them together. And remove petri nets}
+%\arka{Is it better to have a separate state of the art or have one for each research question?}
+%\arka{For LIP. have them together. And remove petri nets}
 %
 \paragraph*{Highlighting of citations.}
 %
-To highlight my contributions to the state of the art,
-citations to articles for which I am a co-author (for eg, \mine{GL25}) are coloured in red.
+To highlight the contribution of the applicant to the state of the art,
+citations to articles for which the applicant is a co-author (for eg, \mine{GL25}) are coloured in red.
 %to separate them from the rest (for eg, \cite{atombook})
-\bigskip
-
 %\subsection{Research questions}
 %
 %\noindent
@@ -240,9 +256,9 @@ citations to articles for which I am a co-author (for eg, \mine{GL25}) are colou
 %In particular, we aim to study three kinds of algebraic objects:
 %Three kinds of algebraic objects have been studied in the literature:
 %\emphdef{orbit-finite dimensional vector spaces},
-%\emphdef{polynomial rings with data values as variables},
+%\emphdef{polynomial rings with variables indexed by data values},
 %and \emphdef{orbit-finitely generated monoids}.
-%A sub-object (vector subspaces, polynomial ideals, sub-monoids) of such an algebraic object is called \emphdef{equivariant} if it is invariant under the automorphisms of the underlying data domain.
+%A sub-object (vector subspaces, polynomial ideals, sub-monoids) of such an algebraic object is called \emphdef{equivariant} if it is invariant under the symmetries of the underlying data domain.
 %The questions on these objects can be divided into two broad categories.
 %%
 %\paragraph*{Finiteness properties.}
@@ -267,36 +283,48 @@ which showed that for equality and ordered data, strictly increasing chains of e
 and even gave an upper bound on their lengths.
 This result was then used to prove decidability of the equivalence problem for weighted register automata.
 
-The articles \cite{HR22}, \mine{GHL22} and \mine{GHL25} studies orbit-finite systems of linear equations and inequalities,
-and as a special case show that the membership problems for finitely generated equivariant vector subspaces and cones are decidable.
-As a corollary we get decidability of solvability of state equations of data Petri nets each of whose tokens carry a tuple of bounded length of
-elements from the equality domain.
-Reachability problem for such data Petri nets is undecidable
-(\cite{Las16}).
+Specific versions of orbit-finite systems of linear equations and inequalities constructed with the equality and ordered domain were studied by \cite{HLT17,HL18,HR22}.
+In collaboration with his doctoral advisors, the applicant gave a complete picture of the solvability problem of orbit-finite systems of linear equations and inequalities constructed with the equality domain
+\mine{GHL22,GHL25,arkathesis}.
+%
+%
+%The articles \cite{HR22}, \mine{GHL22} and \mine{GHL25} studies orbit-finite systems of linear equations and inequalities, and
+As a special case, this work shows that for the equality data domain,
+the membership problems for finitely generated equivariant vector subspaces and cones are decidable.
+As a corollary we get decidability of solvability of state equations of data Petri nets each of whose tokens carry a tuple of bounded length of elements from the equality domain.
+Reachability problem for such data Petri nets is undecidable (\cite{Las16}).
 Therefore solvability of state equations gives us a decidable over-approximation for reachability.
 %
-\paragraph*{Polynomial rings with data values as variables.}
+\paragraph*{Polynomial rings with variables indexed by data values.}
 %
-The polynomial ring with elements from the equality data domains as variables was studied in \cite{Cohen67},
-which showed that this ring is Noetherian in the sense that every strictly increasing chain of equivariant ideals is finite.
-We extended this result in \mine{GL24} for polynomial rings with variables being elements coming from any data domain.
-We showed that a polynomial ring such as this is Noetherian exactly when the finite induced substructures labelled with natural numbers are well-quasi-ordered under embeddability.
+%
+%\arka{inf mny inv under all permutations, gen by us, indexed by data values}
+%
+The polynomial ring with infinitely many variables has been studied in \cite{Cohen67},
+which showed that this ring is Noetherian in the sense that every strictly increasing chain of ideals that are invariant under permutations of the variables, is finite.
+
+%The polynomial ring with variables indexed by elements from the equality data domain was studied in \cite{Cohen67},
+%which showed that this ring is Noetherian in the sense that every strictly increasing chain of equivariant ideals is finite.
+This result was generalised in \mine{GL24} for polynomial rings with variables indexed by elements from an arbitrary data domain.
+This paper showed that a polynomial ring such as this is Noetherian
+(every strictly increasing chain of ideals that are invariant under symmetries of the underlying data domain, is finite)
+exactly when the finite induced substructures of the data domain labelled with natural numbers are well-quasi-ordered under embeddability.
 This condition is satisfied by both the equality and the ordered data domain.
 As a corollary we get that for data domains satisfying the well-quasi-ordering condition,
 strictly increasing chain of equivariant vector subspaces are finite and thus the equivalence problem for weighted automata with these data domain is decidable.
 This generalises the result of \cite{BKM21}.
 
-In \mine{GL25} we extended the results of \mine{GL24} by showing existence and computability of finite Gr\"{o}bner bases for the class of data domains that satisfy the well-quasi-ordering condition.
+The article \mine{GL25} extended the results of \mine{GL24} by showing existence and computability of finite Gr\"{o}bner bases for the class of data domains that satisfy the well-quasi-ordering condition.
 As a corollary we get decidability of the membership problem for orbit-finitely generated ideals for these data domains.
 This in turn implies decidability of the reachability problem of reversible data Petri nets with the same data domains.
 Here we must mention that the reachability problem for general data Petri nets is open for equality data and undecidable for ordered data.
-Both of these data domains satisfy our well-quasi-ordering condition.
+Both of these data domains satisfy the well-quasi-ordering condition.
 
 
-The results of \mine{GL25} also implies decidability of the membership problem of finitely generated vector subspaces of orbit-finite dimensional vector spaces over these data domains.
+The results of \mine{GL25} also implies decidability of the membership problem of finitely generated vector subspaces of orbit-finite dimensional vector spaces over the data domains satisfying the well-quasi-ordering condition.
 This generalises one of two main results of \mine{GHL22}.
 %
-\paragraph*{Orbit-finitely generated monoids}
+\paragraph*{Orbit-finitely generated monoids.}
 These have been introduced by \cite{nomMon},
 which showed that when the syntactic monoid of the language of a register automaton (over equality data) is orbit-finite,
 the language recognised by the register automaton is definable in first order logic if and only if the syntactic monoid is aperiodic.
@@ -392,7 +420,7 @@ where $x(a,b,c) = (c,a) - (a,b) - (b,c)$ and $y(a,b,c) = (b,c) -  (b,a)$.
 \Cref{fig:run} describes a run of $\pn$. 
 In the figure $a_1 < a_2 < a_3 < a_4 \in\dloQ$.
 
-\paragraph*{Orbit-finiteness:}
+\paragraph*{Orbit-finiteness.}
 %Now we explain the concept of orbit-finiteness.
 Let \emphdef{$\aut{\dloQ}$} denote the group of order preserving bijections of the set $\dloQ$.
 It acts on the set $\dloQ^2$ in a point-wise manner.
@@ -429,7 +457,7 @@ i.e.\ $M$ is a countably infinite set and $R_i$ and $f_j$ are respectively relat
 By abuse of notation,
 we use $\M^n$ to refer to the set $M^n$.
 For example,
-we write `` $a\in\M^n$ '', or in words `` $a$ is an element of $\M^n$ '' to mean that $a$ is an element of $M^n$.
+we write ``$a\in\M^n$ '', or in words ``$a$ is an element of $\M^n$ '' to mean that $a$ is an element of $M^n$.
 
 We have already mentioned the structure of \emphdef{ordered domain $\dloQ = (Q,<)$} where $Q$ is the set of rational numbers and $<$ is the usual ordering;
 and the structure of \emphdef{equality domain $\A = (A,=)$} where $A$ is an infinite set and $=$ is the equality relation.
@@ -482,7 +510,7 @@ Thus, we call vector spaces of the form $\flin{\M^n}$ to be \emphdef{orbit-finit
 %and mention some concrete research directions that we will take in this project.
 %
 %\newpage
-\subsection*{Equivariant vector subspaces}\label{subsec:equiv}
+\subsubsection{Equivariant vector subspaces}\label{subsec:equiv}
 %
 The action of the group $\aut{\M}$ extends to $\flin{\M^n}$ as well.
 For illustration,
@@ -534,7 +562,7 @@ Every oligomorphic structure is linearly Noetherian.
 %follows from the results of both \cite{LS23} and \mine{GL24}.
 %\arka{cite previous work}
 %
-\subsection*{Orbit-finite spanning problems}\label{subsec:span}
+\subsubsection{Orbit-finite spanning problems}\label{subsec:span}
 %
 A necessary condition for a configuration $v\in\flin{\dloQ^2}$ of $\pn$ to be reachable from another configuration $u\in\flin{\dloQ^2}$,
 %
@@ -554,7 +582,7 @@ a vector $x\in\flin{\M^n}$ is called \emphdef{$K$-spanned} by a set of vectors $
 $x = \sum_{i=1}^n k_i\cdot p_i$.
 The \emphdef{orbit-finite $K$-spanning problem over $\M$} (in short \emphdef{\ofspan{K}{\M}}) is a decision problem of the following form:
 \prob{\ofspan{K}{\M}}{prob:ofspan}{A vector $x\in\flin{\M^n}$, and an orbit-finite set of vectors $P\subseteq\flin{\M^n}$.}{Is $x$ $K$-spanned by $P$?}
-(\arka{must be on a single page})
+%(\arka{must be on a single page})
 %
 We will work on \ofspan{K}{\M} for $K = \Q,\Q_+,\Z$ and $\N$.
 These decision problem come up naturally from the study of \compsci{coloured Petri nets},
@@ -750,16 +778,14 @@ and \ofspan{\Q_+}{\M} is useful for deciding \compsci{continuous reachability}.
 %
 %\newpage
 %
-\subsection{Polynomial rings with data values as variables}\label{sec:poly}
+\subsection{Polynomial rings with variables indexed by data values}\label{sec:poly}
 %
-\arka{with infinitely many variables?}
-%
-In this setting, we study polynomial rings $\poly{\Q}{\M}$ with rational coefficients and elements from a data domain $\M$ as variables.
+In this setting, we study polynomial rings $\poly{\Q}{X_{\M}}$ with rational coefficients variables indexed by elements from a data domain $\M$.
 Automorphisms of $\M$ act on polynomials in a variable-wise manner.
 For example,
-for an automorphism $\pi$ of $\M$ and $x,y,z\in\M$,
+for an automorphism $\pi$ of $\M$ and $a,b,c\in\M$,
 \[
-\pi(x - 3y^2z + 4) = \pi(x) - 3\pi(y)^2\pi(z) + 4
+\pi(x_a - 3x_b^2x_c + 4) = x_{\pi(a)} - 3x_{\pi(b)}^2x_{\pi(c)} + 4
 \]
 An \emphdef{equivariant ideal} in such a polynomial ring is an ideal that is invariant under the renaming of variables.
 For instance, the set of polynomials whose coefficients sum up to zero is an equivariant ideal in the polynomial ring with elements from the equality domain as variables.
@@ -774,7 +800,7 @@ Then, one can check whether another polynomial $f$ is in the ideal generated by 
 \item \textbf{Hilbert's nullstellensatz:} A finite set of polynomials has a common complex root if and only if the ideal generated by the polynomials does not contain the unit polynomial $1$.
 \end{enumerate}
 %
-In \mine{GL24} we showed that every equivariant ideal in $\poly{\Q}{\M}$ has a orbit-finite set of generators if and only if finite substructures of $\M$ labelled with natural numbers, are well-quasi-ordered under embeddability.
+In \mine{GL24} we showed that every equivariant ideal in $\poly{\Q}{X_{\M}}$ has a finite set of generators if and only if finite substructures of $\M$ labelled with natural numbers, are well-quasi-ordered under embeddability.
 In \mine{GL25} we extended this result by showing that for the same class of structures,
 every equivariant ideal has an orbit-finite Gr\"{o}bener basis which can be computed using the equivariant extension of the Buchberger's algorithm.
 
@@ -782,18 +808,15 @@ Serge Lang has shown in \cite{Lang52} that every countable system of polynomial 
 In this project we will study a variation of this result in the orbit-finite setting.
 \begin{question}
 Characterise data domains $\M$ satisfying the equivariant nullstellensatz property:
-every orbit-finite set of polynomials $G$ in $\poly{\Q}{\M}$ that has a common root,
+every orbit-finite set of polynomials $G$ in $\poly{\Q}{X_{\M}}$ that has a common root,
 has a common equivariant root.
 \end{question}
 %
-Interestingly this property is true for a large class of structures when the underlying field is finite \cite{Prz20}.
-%\arka{be more precise}
-%
-%\newpage
+Interestingly this property is true for a large class of structures when the underlying field is finite \cite{Prz20}.%
 \subsection{Orbit-finitely generated monoids}\label{sec:ofmon}
 %
 %\arka{add example?}
-The article \cite{dataMon} conjectured that the Sch\"{u}tzenberger-McNaughton-Papert theorem extends to register automata:
+The article \cite{nomMon} conjectured that the Sch\"{u}tzenberger-McNaughton-Papert theorem extends to register automata:
 \begin{conjecture}
 The language recognised by a register automaton is definable in first order logic if and only if its syntactic monoid is aperiodic.
 \end{conjecture}
@@ -803,7 +826,7 @@ In this project we will be interested in the settling the full version of the co
 The syntactic monoid of the language of a register automata is orbit-finitely generated,
 but not always orbit-finite.
 In fact, orbit-finite monoids recognise the same class of languages as single-use register automata \cite[Theorem 6]{BS20},
-which is a strictly weaker model \cite{dataMon}.
+which is a strictly weaker model.
 
 As single-use register automata are better behaved than the general class of register automata,
 we would be interested in the following problem:
@@ -828,6 +851,7 @@ Can the definition of $J$-height be modified so that orbit-finite monoids over a
 %
 \subsection{Research methodology}
 %
+%\arka{shorten. Maybe not too much since also used in risk assesment}
 Our ultimate objective is to characterise properties of algebraic objects and decidability of algebraic problems by structural properties of the underlying data domain.
 An example of such a characterisation are Theorems 11 and 12 in \mine{GL24},
 which characterise the Noetherian property of polynomial rings with elements from a data domain as variables by a well-quasi-ordering property of the data domain.
@@ -836,17 +860,17 @@ Our strategy to achieve this objective is to study an algebraic property/problem
 find a structural property of the data domain that leads to satisfaction of the algebraic property/(un)decidability of the algebraic problem,
 find another data domain not having this structural property,
 and continue.
-
-What we call data domains, is called \emph{structures} by model theorists. 
-Classification of structures is the objective of model theory.
-Towards these objective, model theorists have identified several properties of structures.
-These properties come in forms.
-For instance,
-in terms of amalgamation property of their finite induced substructures (free amalgamation, strong amalgamation),
-in terms of the action of their automorphism groups (extreme amenability),
-and finally,
-from the classification theory of Shelah (stability and independence).
-We will try to connect this well-known properties with properties of algebraic objects/decidability of algebraic problems.
+%
+%What we call data domains, is called \emph{structures} by model theorists. 
+%Classification of structures is the objective of model theory.
+%Towards these objective, model theorists have identified several properties of structures.
+%These properties come in forms.
+%For instance,
+%in terms of amalgamation property of their finite induced substructures (free amalgamation, strong amalgamation),
+%in terms of the action of their automorphism groups (extreme amenability),
+%and finally,
+%from the classification theory of Shelah (stability and independence).
+%We will try to connect this well-known properties with properties of algebraic objects/decidability of algebraic problems.
 %
 \subsection{Dissemination of the results}
 %
@@ -862,7 +886,7 @@ This will help us to showcase our results and at the same time benchmark our alg
 %
 \subsection{Project timeline}
 %
-The research on the three kinds of algebraic objects (orbit-finite dimensional vector spaces, polynomial rings with data values as variables, and orbit-finitely generated monoids) can be carried out independently.
+The research on the three kinds of algebraic objects (orbit-finite dimensional vector spaces, polynomial rings with variables indexed by data values, and orbit-finitely generated monoids) can be carried out independently.
 For all these objects,
 we will first study them for specific data domains,
 followed by their study on general classes of data domains.
@@ -882,7 +906,7 @@ The applicant is the sole member of the research team.
 In the past few decades, the study of data enriched models of computation has caught the attention of the theoretical computer science community
 (\cite{KF94},\cite{LNORW08},\cite{atombook}).
 With it, has started the study of orbit-finitely generated algebraic objects
-(\cite{BKM21},\mine{GL24},\cite{dataMon}).
+(\cite{BKM21},\mine{GL24},\cite{nomMon}).
 However, most of the literature till now only studied these algebraic objects only for specific data domains such as equality and ordered.
 This makes our project,
 whose aim is to study them for general classes of data domains,
@@ -905,7 +929,7 @@ we expect significant success in the study of these objects over specific data d
 We will collaborate with Samuel Braunfeld,
 who is a researcher at the Computer Science Institute of the Czech Academy of Science, working in model theory and combinatorics.
 Due to the connection of this project with model theory,
-his expertise on model theory will be very useful.
+his expertise will be very useful.
 %
 \subsection{International collaboration}
 %
@@ -915,9 +939,9 @@ both of whom are members of his current institution (\textbf{LaBRI, Bordeaux}).
 These collaborations will be continued in the project. 
 
 We expect collaboration with Bartek Klin at the \textbf{University of Oxford}, and his PhD student Jingjie Yang.
-Both of them have made fundamental contributions to the study of linear noetherianity (\Cref{def:lin noe,conj:lin noeth}).
+Both of them have made fundamental contributions to the study of orbit-finite dimensional vector spaces.
 
-Finally, we will also collaborate with Miko\l{}aj Boja\'{n}czyk, S\l{}awomir Lasota and Piotr Hofman in \textbf{University of Warsaw}.
+Finally, we will also collaborate with Miko\l{}aj Boja\'{n}czyk, S\l{}awomir Lasota and Piotr Hofman at the \textbf{University of Warsaw}.
 Alongside Bartek Klin, Miko\l{}aj Boja\'{n}czyk and S\l{}awomir Lasota are the pioneers of the study of orbit-finite sets and structures.
 Piotr Hofman has made significant contributions in the study of orbit-finite spanning problems.
 %
@@ -952,9 +976,8 @@ The project does not involve or require collection of any kind of data.
 %
 \subsection{Gender equity plan}
 %
-\arka{what to write?}
+We will adhere to the principles of the Gender Equality Plan (\url{https://www.cs.cas.cz/docs/ENG_Plan_gender.pdf}) of the Institute of Computer Science of Czech Academy of Sciences.
 %
-\bibliographystyle{alpha}
-\bibliography{paper}
+\printbibliography
 %
 \end{document}
